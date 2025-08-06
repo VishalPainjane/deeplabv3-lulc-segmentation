@@ -97,10 +97,16 @@
 
 ### 2. Installation
 
-Install PyTorch following the [official guide](https://pytorch.org/get-started/locally/), then clone and set up the repository:
+> [!IMPORTANT]
+> **Pre-trained models are stored using Git LFS**. Make sure you have Git LFS installed before cloning the repository to download the actual model files.
+
+Install Git LFS and PyTorch following the [official guide](https://pytorch.org/get-started/locally/), then clone and set up the repository:
 
 ```bash
-# Clone the repository
+# Install Git LFS (if not already installed)
+git lfs install
+
+# Clone the repository (Git LFS will automatically download model files)
 git clone https://github.com/VishalPainjane/deeplabv3-lulc-segmentation.git
 cd deeplabv3-lulc-segmentation
 
@@ -111,6 +117,16 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 ```
+
+### 🔁 For Future Usage
+Whenever you clone this repo on a different machine or re-clone it:
+
+```bash
+git lfs install
+git clone https://github.com/VishalPainjane/deeplabv3-lulc-segmentation.git
+```
+Git will automatically pull the actual large files tracked by LFS.
+
 
 ### 3. Run Inference by CLI
 
