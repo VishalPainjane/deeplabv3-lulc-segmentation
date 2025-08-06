@@ -281,7 +281,7 @@ SEN-2_LULC_preprocessed/
 ```
 
 ## 🔄 Execution Results Preview
-
+<!-- 
 <div align="center">
   <p>
      <img width="100%" src="./examples/canola_oli_2022140_lrg.png" alt="LULC Segmentation Input Example">
@@ -294,7 +294,7 @@ SEN-2_LULC_preprocessed/
      <img width="100%" src="./static/predicted_mask.png" alt="LULC Segmentation Output" style="border: 2px solid #ddd; border-radius: 8px;">
   </p>
   <p><em>Output: 8-class land cover segmentation map</em></p>
-</div>
+</div> -->
 
 ## 🌍 Applications & Use Cases
 
