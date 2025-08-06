@@ -3,6 +3,13 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# models/deeplabv3_effecientnet_b2.pth
+# models/unet_resnet34.pth
+# models/
+models/*.pth
+
+
+
 # C extensions
 *.so
 
