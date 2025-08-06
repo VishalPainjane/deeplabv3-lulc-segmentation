@@ -6,9 +6,10 @@ __pycache__/
 # models/deeplabv3_effecientnet_b2.pth
 # models/unet_resnet34.pth
 # models/
-models/*.pth
+# models/*.pth
+# 
 
-
+SEN-2_LULC_preprocessed.zip
 
 # C extensions
 *.so
