@@ -39,7 +39,7 @@
 
 <div align="center">
   <p>
-      <img width="100%" src="./examples/canola_oli_2022140_lrg.png" alt="LULC Segmentation Architecture">
+      <img width="100%" src="evaluation_results\DeepLabV3Plus_(EfficientNet-B2)\qualitative_predictions\comparison_9.png" alt="LULC Segmentation Architecture">
   </p>
 </div>
 
