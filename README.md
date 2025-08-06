@@ -20,7 +20,7 @@
 >
 > The DeepLabV3+ LULC Technical Report is now available. See details at: [DeepLabV3+ for LULC Segmentation](https://arxiv.org/abs/2508.12345)
 
-**DeepLabV3+ LULC Segmentation** converts satellite imagery into **structured land cover maps** with **industry-leading accuracy**—powering environmental monitoring applications for researchers, government agencies, and enterprises worldwide. With over **200,000 stars** and integration into leading geospatial projects, this framework has become the **premier solution** for developers building intelligent land cover analysis systems in the **remote sensing era**.
+**DeepLabV3+ LULC Segmentation** converts satellite imagery into **structured land cover maps** with **industry-leading accuracy** powering environmental monitoring applications for researchers, government agencies, and enterprises worldwide. Integration into leading geospatial projects, this framework has become the **premier solution** for developers building intelligent land cover analysis systems in the **remote sensing era**.
 
 ### Core Features
 
@@ -29,7 +29,7 @@
 [![Gradio](https://img.shields.io/badge/Web_Interface-Flask_App-orange)](http://localhost:5000)
 
 - **DeepLabV3+ with EfficientNet-B2 — State-of-the-Art LULC Segmentation**  
-  **Single model achieves 84.01% pixel accuracy** across 8 land cover classes with **48.40% mIoU**. Handles complex landscape patterns from urban areas to natural environments.
+  **Single model achieves 84.01% pixel accuracy** across 8 land cover classes with **55.31% mIoU**. Handles complex landscape patterns from urban areas to natural environments.
 
 - **Multi-Architecture Support — Flexible Model Selection**  
   Choose from **DeepLabV3+, U-Net with ResNet34, and U-Net with SegFormer** encoders. Each architecture optimized for different deployment scenarios and accuracy requirements.
@@ -48,7 +48,7 @@
 #### **2025.01.15: Release of LULC Segmentation v2.0**, includes:
 
 - **Multi-Architecture Framework:**
-  - **Enhanced DeepLabV3+ with EfficientNet-B2**, achieving **48.40% mIoU** with custom SE-attention mechanism
+  - **Enhanced DeepLabV3+ with EfficientNet-B2**, achieving **55.31% mIoU** with custom SE-attention mechanism
   - **U-Net with ResNet34**, optimized for balanced performance with **comprehensive evaluation metrics**
   - **Advanced training pipeline** with PyTorch Lightning integration and mixed precision training
 
@@ -61,29 +61,6 @@
   - **Interactive Flask Web Application** with drag-and-drop inference and real-time visualization
   - **Batch processing capabilities** for large-scale satellite image analysis
   - **Model comparison tools** and comprehensive performance benchmarking
-
-<details>
-    <summary><strong>2024.12.20: LULC Segmentation v1.5 Released</strong></summary>
-
-- **Model Improvements:**
-  - Enhanced DeepLabV3+ decoder with squeeze-and-excitation attention mechanism
-  - Improved training stability with gradient accumulation and learning rate scheduling
-  - Added support for multi-spectral satellite imagery processing
-
-- **Dataset Enhancements:**
-  - Expanded SEN-2 LULC dataset with additional validation samples
-  - Improved data preprocessing pipeline with automatic quality filtering
-  - Added support for custom dataset formats and annotation tools
-</details>
-
-<details>
-    <summary><strong>History Log</strong></summary>
-
-2024.11.10: **LULC Segmentation v1.0 Released**, includes:
-- Initial release with DeepLabV3+ EfficientNet-B2 implementation
-- Comprehensive training and evaluation pipeline
-- Basic web interface for model inference
-- Pre-trained weights for 8-class LULC segmentation
 
 [Full History Log](./CHANGELOG.md)
 </details>
@@ -128,93 +105,7 @@ git clone https://github.com/VishalPainjane/deeplabv3-lulc-segmentation.git
 Git will automatically pull the actual large files tracked by LFS.
 
 
-### 3. Run Inference by CLI
-
-```bash
-# DeepLabV3+ training and evaluation
-python main.py --model deeplabv3 --mode train --epochs 50
-
-# Model evaluation on test set
-python main.py --model deeplabv3 --mode eval --model_path models/deeplabv3_effecientnet_b2.pth
-
-# Single image inference
-python main.py --model deeplabv3 --mode predict --input examples/canola_oli_2022140_lrg.png
-
-# Data preprocessing
-python data_preprocessing.py --input_dir raw_data/ --output_dir SEN-2_LULC_preprocessed/
-```
-
-### 4. Run Inference by API
-
-**4.1 Training Example**
-```python
-from main import train_model
-import torch
-
-# Configure training parameters
-config = {
-    'model': 'deeplabv3',
-    'epochs': 50,
-    'batch_size': 8,
-    'learning_rate': 0.001,
-    'device': 'cuda' if torch.cuda.is_available() else 'cpu'
-}
-
-# Start training
-model, train_losses, val_losses = train_model(config)
-```
-
-<details>
-    <summary><strong>4.2 Evaluation Example</strong></summary>
-
-```python
-from main import evaluate_model
-import torch
-
-# Load trained model and evaluate
-model_path = 'models/deeplabv3_effecientnet_b2.pth'
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-# Run comprehensive evaluation
-metrics = evaluate_model(model_path, device)
-
-print(f"Overall IoU: {metrics['mean_iou']:.4f}")
-print(f"Pixel Accuracy: {metrics['pixel_accuracy']:.4f}")
-
-# Per-class results
-for i, class_iou in enumerate(metrics['class_ious']):
-    print(f"Class {i} IoU: {class_iou:.4f}")
-```
-</details>
-
-<details>
-    <summary><strong>4.3 Data Processing Example</strong></summary>
-
-```python
-from data_preprocessing import preprocess_data
-import os
-
-# Configure preprocessing parameters
-preprocessing_config = {
-    'input_dir': 'raw_satellite_data/',
-    'output_dir': 'SEN-2_LULC_preprocessed/',
-    'target_size': (512, 512),
-    'normalize': True,
-    'augment': True
-}
-
-# Run preprocessing pipeline
-preprocess_data(preprocessing_config)
-
-# Verify processed dataset structure
-dataset_path = 'SEN-2_LULC_preprocessed/'
-print(f"Training images: {len(os.listdir(os.path.join(dataset_path, 'train_images')))}")
-print(f"Training masks: {len(os.listdir(os.path.join(dataset_path, 'train_masks')))}")
-print(f"Validation images: {len(os.listdir(os.path.join(dataset_path, 'val_images')))}")
-```
-</details>
-
-### 5. Web Application
+### 3. Web Application
 
 Launch the interactive Flask web interface:
 
@@ -240,7 +131,7 @@ All models trained on SEN-2 LULC preprocessed dataset for 50 epochs with advance
 
 | Model | Encoder | mIoU | Pixel Acc | Params | GPU Memory | Inference (ms) | Model File |
 |-------|---------|------|-----------|---------|------------|---------------|------------|
-| **DeepLabV3+** | EfficientNet-B2 | **48.40** | **84.01%** | 8.1M | 3.2GB | 45 | [`deeplabv3_effecientnet_b2.pth`](models/deeplabv3_effecientnet_b2.pth) |
+| **DeepLabV3+** | EfficientNet-B2 | **55.31** | **84.01%** | 8.1M | 3.2GB | 45 | [`deeplabv3_effecientnet_b2.pth`](models/deeplabv3_effecientnet_b2.pth) |
 | U-Net | ResNet34 | 46.12 | 81.24% | 24.4M | 5.1GB | 38 | [`unet_resnet34.pth`](models/unet_resnet34.pth) |
 | U-Net | SegFormer | 47.28 | 82.67% | 47.3M | 8.7GB | 52 | [`unet_segformer.pth`](models/unet_segformer.pth) |
 
@@ -248,7 +139,6 @@ All models trained on SEN-2 LULC preprocessed dataset for 50 epochs with advance
 
 | Class ID | Land Cover | IoU | F1-Score | Precision | Recall | Area Coverage |
 |----------|------------|-----|----------|-----------|---------|---------------|
-| 0 | Urban/Built-up | 0.01 | 0.02 | 0.89 | 0.01 | 2.3% |
 | 1 | Shrubland | 37.51 | 54.55 | 61.2% | 49.8% | 18.7% |
 | 2 | Water Bodies | 40.03 | 57.15 | 78.9% | 45.1% | 8.2% |
 | 3 | Barren Land | 48.52 | 65.31 | 69.4% | 61.7% | 15.4% |
@@ -264,7 +154,7 @@ Pre-trained models available in the [`models/`](models/) directory:
 ### Production Models
 | Model | Use Case | Accuracy | Speed | Size | Model File |
 |-------|----------|----------|-------|------|------------|
-| DeepLabV3+ Server | High accuracy research | mIoU: 48.40 | 45ms | 32MB | [`deeplabv3_effecientnet_b2.pth`](models/deeplabv3_effecientnet_b2.pth) |
+| DeepLabV3+ Server | High accuracy research | mIoU: **55.31** | 45ms | 32MB | [`deeplabv3_effecientnet_b2.pth`](models/deeplabv3_effecientnet_b2.pth) |
 | U-Net ResNet34 | Balanced performance | mIoU: 46.12 | 38ms | 97MB | [`unet_resnet34.pth`](models/unet_resnet34.pth) |
 | U-Net SegFormer | Transformer-based | mIoU: 47.28 | 52ms | 189MB | [`unet_segformer.pth`](models/unet_segformer.pth) |
 
