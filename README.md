@@ -43,6 +43,12 @@
   </p>
 </div>
 
+<div align="center">
+  <p>
+      <img width="100%" src="evaluation_results\DeepLabV3Plus_(EfficientNet-B2)\qualitative_predictions\comparison_28.png" alt="LULC Segmentation Architecture">
+  </p>
+</div>
+
 ## 📣 Recent Updates
 
 #### **2025.01.15: Release of LULC Segmentation v2.0**, includes:
